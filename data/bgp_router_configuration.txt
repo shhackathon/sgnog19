@@ -1,6 +1,6 @@
 ! Service01
 interface Gi0/0/0/0
-  ipv4 address 10.0.0.1 255.255.255.0
+  ipv4 address 10.0.0.1 255.255.255.252
 !
 router bgp 12345
   neighbor 10.0.0.2
@@ -36,7 +36,7 @@ end-set
 !
 ! Service02
 interface Gi0/0/0/1
-  ipv4 address 10.0.0.5 255.255.255.0
+  ipv4 address 10.0.0.5 255.255.255.252
 !
 router bgp 12345
   neighbor 10.0.0.6
@@ -72,7 +72,7 @@ end-set
 !
 ! Service03
 interface Gi0/0/0/2
-  ipv4 address 10.0.0.10 255.255.255.0
+  ipv4 address 10.0.0.10 255.255.255.252
 !
 router bgp 12345
   neighbor 10.0.0.9
