@@ -24,7 +24,7 @@ def validate(prefixset_name,old_prefixset):
 def main():
     prefixset_name = "Service01_prefix"
     new_prefix = "192.0.0.0/24"
-    operation = "add"
+    operation = "remove"
     push_change(prefixset_name, new_prefix, operation)
     
     
