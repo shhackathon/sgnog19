@@ -3,7 +3,6 @@ from netmiko import ConnectHandler
 
 next_hop = input("Enter next_hop: ")
 policy_name = input("Enter policy_name: ")
-session = input("Enter session: ")
 pfx = input("Enter def: ")
 
 
