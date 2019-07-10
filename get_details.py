@@ -42,8 +42,9 @@ def find_nxthop(int_ip,mask):
 
 def main():
 
-SID = input('Enter SID: ')
-prefix_add = input('Enter Prefix: ')
+    SID = input('Enter SID: ')
+    prefix_add = input('Enter Prefix: ')
+    get_details(SID)
 
 if __name__ == '__main__':
     main()
