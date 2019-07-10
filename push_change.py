@@ -32,7 +32,8 @@ def validate(prefixset_name,old_prefixlist):
     
     old_to_new = old_set - new_set
     new_to_old = new_set - old_set
-    print("Diff from Old to new", old_to_new)
+    print("Diff from Old to New", old_to_new)
+    print("Diff from New to Old", new_to_old)
     return True
     
     
