@@ -5,11 +5,12 @@ def push_change(prefixset_name,new_prefix,operation):
     session = login_router()
     
     cmd = "edit prefix-set " + prefixset_name + " inline " + operation + ' "' + new_prefix + '"'
-    print(cmd)
+    print(cmd, flush=True)
     output =  session.send_command(cmd)
-    print(output)
+    print(output, flush=True)
     if "yes" in output:
-        output =  session.send_command("yes", expect_string="xrv#")
+        output =  session.send_command("yes")
+        print(output, flush=True)
     
     
 def validate(prefixset_name,old_prefixset):
