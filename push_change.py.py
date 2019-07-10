@@ -4,7 +4,7 @@ from get_details import get_details
 def push_change(prefixset_name,new_prefix,operation):
     session = login_router()
     
-    cmd = "edit prefix-set " + prefixset_name + " inline " + operation + ' "' + new_prefix + "'"
+    cmd = "edit prefix-set " + prefixset_name + " inline " + operation + ' "' + new_prefix + '"'
     print(cmd)
     output =  session.send_command(cmd)
     print(output)
