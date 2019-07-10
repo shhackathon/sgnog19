@@ -6,13 +6,13 @@ import textfsm
 from netmiko import ConnectHandler
 
 
-def get_router_infomation(ip, username, password):
+def get_router_infomation:
 
    ssh_connection = ConnectHandler(
       device_type ='cisco_xr',
-      ip=ip,
-      username=username,
-      password=password
+      ip=172.16.14.201,
+      username=sgnog,
+      password=sgnog
     )
 
    result = ssh_connection.find_prompt() + "\n"
