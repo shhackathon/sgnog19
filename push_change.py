@@ -18,6 +18,7 @@ def validate(prefixset_name,old_prefixset):
     
     cmd = "show rpl prefix-set" + prefixset_name
     output =  session.send_command(cmd)
+    print(output)
     
    
     
