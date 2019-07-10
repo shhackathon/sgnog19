@@ -1,5 +1,6 @@
 from ssh import login_router
 from get_details import get_details
+import difflib
 
 def push_change(prefixset_name,new_prefix,operation):
     session = login_router()
@@ -17,12 +18,16 @@ def push_change(prefixset_name,new_prefix,operation):
     
     
     
-def validate(prefixset_name,old_prefixlist):
+def validate(prefixset_name,old_prefixlist,new_prefixlist):
     session = login_router()
         
     cmd = "show rpl prefix-set " + prefixset_name
-    output =  session.send_command(cmd)
+    new_prefixlist =  session.send_command(cmd)
     print(output)
+    print(old_prefixlist) 
+def
+    
+    
     
    
     
