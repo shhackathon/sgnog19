@@ -23,7 +23,11 @@ def main():
 
     info = get_details(sid)
     prefixset_name, current_prefixes = info[-2:]
-    print(f"{sid} / {prefixset_name} / {current_prefixes}")
+    print("{} / {} / {}".format(
+        sid,
+        prefixset_name,
+        current_prefixes,
+    ))
 
     if prefixset_name:
         # update_prefix(prefixset_name, prefix, operation)
