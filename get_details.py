@@ -38,7 +38,8 @@ def get_details(SID):
 #                prefixset_new.append(j.split(',\n')[0])
 #            elif '\n' in j:
 #                prefixset_new.append(j.split('\n')[0])
-    return iface,iface_ip,nbr_ip,rpl,prefixset_name,(' ').join(prx_set_cfg.ioscfg)
+    diff_libinput = (' ').join(prx_set_cfg.ioscfg) + ' end set\n'
+    return iface,iface_ip,nbr_ip,rpl,prefixset_name,diff_libinput
 
 
 def find_nxthop(int_ip,mask):
