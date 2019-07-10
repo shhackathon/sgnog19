@@ -25,7 +25,7 @@ def validate(prefixset_name,old_prefixlist):
     new_prefixlist =  session.send_command(cmd)
     print(new_prefixlist)
     print(old_prefixlist)
-    for line in difflib.unified_diff(new_prefixlist,old_prefixlist):
+    for line in difflib.unified_diff(new_prefixlist.split("\n"), old_prefixlist.split("\n")):
        print(line)
     
     
