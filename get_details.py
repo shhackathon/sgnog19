@@ -40,18 +40,6 @@ def find_nxthop(int_ip,mask):
         next_hop.remove(int_ip)
         return nxt_hop
 
-def login_device():
-    #TODO:
-
-def create_config():
-    #TODO:
-
-def push_config():
-    #TODO:
-
-def verify_config():
-    #TODO:
-
 def main():
 
 SID = input('Enter SID: ')
