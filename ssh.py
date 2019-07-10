@@ -10,13 +10,18 @@ def login_router():
       password='sgnog'
       )
 
-#ssh_connection.find_prompt() + "\n"
+  # result = ssh_connection.find_prompt() + "\n"
 
-   result = ssh_connection.send_command("show ip int brief", delay_factor=2)
+  # result += ssh_connection.send_command("show ip int brief", delay_factor=2)
 
    #result = net_connect.send_config_set(['interface g0/0/0/3', 'no shut'])
 
-   print(result)
+  # print(result)
 
-   #ssh_connection.disconnect()
+  # ssh_connection.disconnect()
    return 1
+
+def main():
+        login_router()
+if __name__ == '__main__':
+        main()
