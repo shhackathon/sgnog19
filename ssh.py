@@ -19,7 +19,7 @@ def login_router():
   # print(result)
 
   # ssh_connection.disconnect()
-   return 1
+   return ssh_session
 
 def main():
         login_router()
