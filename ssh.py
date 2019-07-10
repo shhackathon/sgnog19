@@ -4,9 +4,9 @@ from netmiko import ConnectHandler
 
 ssh_connection = ConnectHandler(
    device_type ='cisco_xr',
-   ip=172.16.14.201,
-   username=sgnog,
-   password=sgnog
+   ip='172.16.14.201',
+   username='sgnog',
+   password='sgnog'
     )
 
 result = ssh_connection.find_prompt() + "\n"
