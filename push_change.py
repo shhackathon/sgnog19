@@ -27,8 +27,8 @@ def validate(prefixset_name,old_prefixlist):
     # print(old_prefixlist)
     # for line in difflib.unified_diff(new_prefixlist.split("\n"), old_prefixlist.split("\n"), n=0):
     #   print(line)
-    old_set = set([l.strip("\n").lstrip(" ").strip(",") for l in old_prefixlist if "/" in l])
-    new_set = set([l.strip("\n").lstrip(" ").strip(",") for l in new_prefixlist if "/" in l])
+    old_set = set([l.lstrip(" ").strip(",") for l in old_prefixlist.split("\n") if "/" in l])
+    new_set = set([l.lstrip(" ").strip(",") for l in new_prefixlist.split("\n") if "/" in l])
     
     old_to_new = old_set - new_set
     new_to_old = new_set - old_set
