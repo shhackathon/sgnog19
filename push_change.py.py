@@ -9,7 +9,7 @@ def push_change(prefixset_name,new_prefix,operation):
     output =  session.send_command(cmd, expect_string="yes", auto_find_prompt=False)
     print(output, flush=True)
     if "yes" in output:
-        output =  session.send_command("yes")
+        output =  session.send_command("yes", expect_string="xrv#")
         print(output, flush=True)
     
     
