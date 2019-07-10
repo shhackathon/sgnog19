@@ -25,7 +25,7 @@ def validate(prefixset_name,old_prefixlist,new_prefixlist):
     new_prefixlist =  session.send_command(cmd)
     print(output)
     print(old_prefixlist) 
-def
+
     
     
     
