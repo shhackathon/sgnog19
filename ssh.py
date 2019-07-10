@@ -16,7 +16,7 @@ def login_router():
 
    #result = net_connect.send_config_set(['interface g0/0/0/3', 'no shut'])
 
-   print(ssh_connection)
+   #print(ssh_connection)
 
   # ssh_connection.disconnect()
    return ssh_connection
