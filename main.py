@@ -1,3 +1,4 @@
+import sys
 from push_change import push_change
 from get_details import get_details
 
@@ -17,9 +18,10 @@ def update_prefix(prefixset_name, prefix, operation):
 
 
 def main():
-    sid = "Service01"
-    prefix = "10.0.0.0/24"
-    operation = "add"
+    if len(sys.argv) == 4:
+        sid = sys.argv[1]
+        operation = sys.argv[2]
+        prefix = sys.argv[3]
 
     info = get_details(sid)
     prefixset_name, current_prefixes = info[-2:]
