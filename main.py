@@ -30,8 +30,7 @@ def main():
     ))
 
     if prefixset_name:
-        # update_prefix(prefixset_name, prefix, operation)
-        pass
+        update_prefix(prefixset_name, prefix, operation)
 
 if __name__ == "__main__":
     main()
