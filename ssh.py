@@ -16,10 +16,10 @@ def login_router():
 
    #result = net_connect.send_config_set(['interface g0/0/0/3', 'no shut'])
 
-  # print(result)
+   print(ssh_connection)
 
   # ssh_connection.disconnect()
-   return ssh_session
+   return ssh_connection
 
 def main():
         login_router()
