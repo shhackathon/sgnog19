@@ -41,7 +41,7 @@ def find_nxthop(int_ip,mask):
         next_hop.append(str(k))
     if int_ip in next_hop:
         next_hop.remove(int_ip)
-        return nxt_hop
+        return next_hop
 
 def main():
 
