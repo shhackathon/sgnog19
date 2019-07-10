@@ -5,16 +5,19 @@ def get_details(SID):
     #TODO: get
     with open('/home/daniel/sgnog19/data/xrv.cfg') as current_config:
         conf = ciscoconfparse.CiscoConfParse(current_config,comment='!')
-        iface = conf.find_objects_w_child(r'interface', 'description {}'.format(SID))[0]
-        for d in iface.ioscfg:
+        iface_conf = conf.find_objects_w_child(r'interface', 'description {}'.format(SID))[0]
+        for d in iface_conf.ioscfg:
+            if 'interface' in d:
+                iface = d.split(' ')[-1]
             if 'ipv4 address' in d:
                 iface_ip = d.split(' ')[-2]
                 netmask = d.split(' ')[-1]
-                nbr_ip = find_nxthop(iface_ip,netmask)
+                nbr_ip = find_nxthop(iface_ip,netmask.split('\n')[0])
 
         bgpcfg = conf.find_objects(r'^router bgp')[0].ioscfg
         bgpcfg = ciscoconfparse.CiscoConfParse(bgpcfg)
         nbr = bgpcfg.find_objects("^ +neighbor {}".format(nbr_ip))[-1]
+        print(nbr)
         #nbr.ioscfg  get route policy
         for i in nbr.ioscfg:
             if 'route_policy' in i:
@@ -38,7 +41,7 @@ def find_nxthop(int_ip,mask):
         next_hop.append(str(k))
     if int_ip in next_hop:
         next_hop.remove(int_ip)
-        return nxt_hop
+        return next_hop
 
 def main():
 
