@@ -6,7 +6,7 @@ def push_change(prefixset_name,new_prefix,operation):
     
     cmd = "edit prefix-set " + prefixset_name + " inline " + operation + ' "' + new_prefix + '"'
     print(cmd, flush=True)
-    output =  session.send_command(cmd)
+    output =  session.send_command(cmd, expect_string="yes", auto_find_prompt=False)
     print(output, flush=True)
     if "yes" in output:
         output =  session.send_command("yes")
