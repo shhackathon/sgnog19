@@ -2,13 +2,16 @@ from ssh import login_router
 from get_details import get_details
 
 def push_change(prefixset_name,new_prefix,operation):
-    session = login_router
+    session = login_router()
     
     cmd = "edit prefix-set" + prefixset_name + "inline" + operation + '"' + new_prefix + "'"
     output =  session.send_command(cmd)
     
 def validate(prefixset_name,old_prefixset):
-    session = login_router
+    session = login_router()
+    
+    cmd = "show rpl prefix-set" + prefixset_name
+    output =  session.send_command(cmd)
     
    
     
