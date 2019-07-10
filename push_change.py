@@ -1,25 +1,33 @@
 from ssh import login_router
 from get_details import get_details
+import difflib
 
 def push_change(prefixset_name,new_prefix,operation):
     session = login_router()
     
     cmd = "edit prefix-set " + prefixset_name + " inline " + operation + ' "' + new_prefix + '"'
     print(cmd, flush=True)
-    output =  session.send_command(cmd, expect_string="(yes|OK)", auto_find_prompt=False)
+    output = session.send_command_timing(cmd, max_loops=10)
+    #output =  session.send_command(cmd, expect_string="yes", auto_find_prompt=False)
     print(output, flush=True)
     if "yes" in output:
         output =  session.send_command("yes", expect_string="xrv#")
         print(output, flush=True)
     
+    return True
     
     
-def validate(prefixset_name,old_prefixset):
+    
+def validate(prefixset_name,old_prefixlist):
     session = login_router()
         
-    cmd = "show rpl prefix-set" + prefixset_name
-    output =  session.send_command(cmd)
-    print(output)
+    cmd = "show rpl prefix-set " + prefixset_name
+    new_prefixlist =  session.send_command(cmd)
+    print(new_prefixlist)
+    print(old_prefixlist) 
+
+    
+    
     
    
     
