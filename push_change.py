@@ -12,15 +12,15 @@ def push_change(prefixset_name,new_prefix,operation):
     if "yes" in output:
         output =  session.send_command("yes", expect_string="xrv#")
         print(output, flush=True)
-    else:
-        pass
+    
+    return True
     
     
     
-def validate(prefixset_name,old_prefixset):
+def validate(prefixset_name,old_prefixlist):
     session = login_router()
         
-    cmd = "show rpl prefix-set" + prefixset_name
+    cmd = "show rpl prefix-set " + prefixset_name
     output =  session.send_command(cmd)
     print(output)
     
