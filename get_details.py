@@ -17,22 +17,29 @@ def get_details(SID):
         bgpcfg = conf.find_objects(r'^router bgp')[0].ioscfg
         bgpcfg = ciscoconfparse.CiscoConfParse(bgpcfg)
         nbr = bgpcfg.find_objects("^ +neighbor {}".format(nbr_ip))[-1]
-        print(nbr)
+#        print(nbr)
         #nbr.ioscfg  get route policy
         for i in nbr.ioscfg:
-            if 'route_policy' in i:
-                rpl = split(" ")[-2]
-
+            if 'route-policy' and 'in' in i:
+                rpl = i.split(" ")[-2]
+                print(rpl)
         rpl_cfg = conf.find_objects(r"^route-policy {}".format(rpl))[-1]
+#        print(rpl_cfg)
         for l in rpl_cfg.ioscfg:
             if "destination in" in l:
                 tmp = l.split(")")[0]
                 prefixset_name = tmp.split(" ")[-1]
 
-        prx_set_cfg = config.find_objects("^prefix-set {}".format(prefixset_name))[-1]
+        prx_set_cfg = conf.find_objects("^prefix-set {}".format(prefixset_name))[-1]
         prefixset = [i.lstrip(" ").strip(",") for i in prx_set_cfg.ioscfg[1:]]
+        prefixset_new = []
+        for j in prefixset:
+            if ',\n' in j:
+                prefixset_new.append(j.split(',\n')[0])
+            elif '\n' in j:
+                prefixset_new.append(j.split('\n')[0])
+    return iface,iface_ip,nbr_ip,rpl,prefixset_name,prefixset_new
 
-    return iface,iface_ip,nbr_ip,rpl,prefixset_name,prefixset
 
 def find_nxthop(int_ip,mask):
     next_hop = []
@@ -41,13 +48,13 @@ def find_nxthop(int_ip,mask):
         next_hop.append(str(k))
     if int_ip in next_hop:
         next_hop.remove(int_ip)
-        return next_hop
+        return next_hop[0]
 
 def main():
 
     SID = input('Enter SID: ')
     prefix_add = input('Enter Prefix: ')
-    get_details(SID)
+    print(get_details(SID))
 
 if __name__ == '__main__':
     main()
