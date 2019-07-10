@@ -31,14 +31,15 @@ def get_details(SID):
                 prefixset_name = tmp.split(" ")[-1]
 
         prx_set_cfg = conf.find_objects("^prefix-set {}".format(prefixset_name))[-1]
-        prefixset = [i.lstrip(" ").strip(",") for i in prx_set_cfg.ioscfg[1:]]
-        prefixset_new = []
-        for j in prefixset:
-            if ',\n' in j:
-                prefixset_new.append(j.split(',\n')[0])
-            elif '\n' in j:
-                prefixset_new.append(j.split('\n')[0])
-    return iface,iface_ip,nbr_ip,rpl,prefixset_name,prefixset_new
+#        prefixset = [i.lstrip(" ").strip(",") for i in prx_set_cfg.ioscfg[1:]]
+#        prefixset_new = []
+#        for j in prefixset:
+#            if ',\n' in j:
+#                prefixset_new.append(j.split(',\n')[0])
+#            elif '\n' in j:
+#                prefixset_new.append(j.split('\n')[0])
+    diff_libinput = ('').join(prx_set_cfg.ioscfg) + ' end set\n'
+    return iface,iface_ip,nbr_ip,rpl,prefixset_name,diff_libinput
 
 
 def find_nxthop(int_ip,mask):
