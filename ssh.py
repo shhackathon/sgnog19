@@ -1,8 +1,4 @@
-import json
-import os
-import webbrowser
-import sys
-import textfsm
+import netmiko
 from netmiko import ConnectHandler
 
 
