@@ -1,5 +1,5 @@
 import sys
-from push_change import push_change
+from push_change import push_change, validate
 from get_details import get_details
 
 
@@ -11,10 +11,19 @@ def update_prefix(prefixset_name, prefix, operation):
     )
 
     if result is True:
-        print("GOOD")
+        print("DONE - Prefix {} has been {}ed to {} successfully".format(
+            prefix,
+            operation,
+            prefixset_name,
+        ))
+        return True
     else:
-        print("BAD")
-
+        print("FAILED - Unable to {} {} to {}".format(
+            operation,
+            prefix,
+            prefixset_name,
+        ))
+        return False
 
 
 def main():
@@ -32,7 +41,9 @@ def main():
     ))
 
     if prefixset_name:
-        update_prefix(prefixset_name, prefix, operation)
+        if update_prefix(prefixset_name, prefix, operation):
+            result = validate(prefixset_name, current_prefixes)
+            
 
 if __name__ == "__main__":
     main()
