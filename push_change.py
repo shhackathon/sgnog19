@@ -13,7 +13,9 @@ def push_change(prefixset_name,new_prefix,operation):
         print(output, flush=True)
     
     
+    
 def validate(prefixset_name,old_prefixset):
+    session = login_router()
         
     cmd = "show rpl prefix-set" + prefixset_name
     output =  session.send_command(cmd)
