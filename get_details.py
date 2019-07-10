@@ -38,7 +38,7 @@ def get_details(SID):
 #                prefixset_new.append(j.split(',\n')[0])
 #            elif '\n' in j:
 #                prefixset_new.append(j.split('\n')[0])
-    diff_libinput = (' ').join(prx_set_cfg.ioscfg) + ' end set\n'
+    diff_libinput = ('').join(prx_set_cfg.ioscfg) + ' end set\n'
     return iface,iface_ip,nbr_ip,rpl,prefixset_name,diff_libinput
 
 
