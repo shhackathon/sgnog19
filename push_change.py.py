@@ -1,33 +1,26 @@
-import netmiko
-from netmiko import ConnectHandler
+from ssh import login_router
+from get_details import get_details
 
-next_hop = input("Enter next_hop: ")
-policy_name = input("Enter policy_name: ")
-pfx = input("Enter def: ")
-
-
-def send_config(next_hop,policy_name,session,pfx)
-
-config_add_pfx = ['edit prefix-set policy_name inline add x.x.x.x/x',
-                  'show run formal | i nexthop'
-                  'show rpl route-policy policy_name']
-output_add = net_connect.send_config_set(config_add_pfx)
-print(output_add)
-
-config_rmv_pfx = ['edit prefix-set policy_name inline remove x.x.x.x/x',
-                  'show run formal | i nexthop'
-                  'show rpl route-policy policy_name']
-output_rmv = net_connect.send_config_set(config_rmv_pfx)
-print(output_rmv)
-
-
-
-
-
-
-
-
-
+def push_change(prefixset_name,new_prefix,operation):
+    session = login_router
+    
+    cmd = "edit prefix-set" + prefixset_name + "inline" + operation + '"' + new_prefix + "'"
+    output =  session.send_command(cmd)
+    
+def validate(prefixset_name,old_prefixset):
+    session = login_router
+    
+   
+    
+def main():
+    prefixset_name = "Service01_prefix"
+    new_prefix = "192.0.0.0/24"
+    operation = "add"
+    push_change(prefixset_name, new_prefix, operation)
+    
+    
+if __name__ == '__main__':
+    main()
 
 
 
