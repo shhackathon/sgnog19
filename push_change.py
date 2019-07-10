@@ -24,8 +24,9 @@ def validate(prefixset_name,old_prefixlist):
     cmd = "show rpl prefix-set " + prefixset_name
     new_prefixlist =  session.send_command(cmd)
     print(new_prefixlist)
-    print(old_prefixlist) 
-
+    print(old_prefixlist)
+    for line in difflib.unified_diff(new_prefixlist,old_prefixlist)
+       print(line)
     
     
     
