@@ -2,8 +2,6 @@ import netmiko
 from netmiko import ConnectHandler
 
 
-def get_router_infomation:
-
    ssh_connection = ConnectHandler(
       device_type ='cisco_xr',
       ip=172.16.14.201,
@@ -18,4 +16,3 @@ def get_router_infomation:
    ssh_connection.disconnect()
    print (result)
 
-   return result
